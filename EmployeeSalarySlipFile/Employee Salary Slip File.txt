@@ -1,0 +1,16 @@
+                 EMPLOYEE DETAILS                 
+***************************************
+Employee Name:          tirth 
+Employee ID:            <built-in function id> 
+Employee Position:      python dev. 
+Employee Mobile Number: 9909280539 
+Employee Email ID:      tirth@gmail.com 
+Employee Address:       narol 
+Employee Salary:        10000 
+TA:                     200.0 
+DA:                     300.0 
+HRA:                    2000.0 
+PF:                     1800.0 
+Salary:                 10000 
+Total Salary:           10700.0 
+***************************************
