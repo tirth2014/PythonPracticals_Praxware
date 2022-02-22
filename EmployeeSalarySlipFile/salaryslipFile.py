@@ -18,7 +18,7 @@ totalSal = net + salary
 emp.write("EMPLOYEE DETAILS".center(50))
 emp.write("\n***************************************")
 emp.write("\nEmployee Name:          "f"{name} ")
-emp.write("\nEmployee ID:            "f"{id} ")
+emp.write("\nEmployee ID:            "f"{empId} ")
 emp.write("\nEmployee Position:      "f"{pos} ")
 emp.write("\nEmployee Mobile Number: "f"{mob} ")
 emp.write("\nEmployee Email ID:      "f"{email} ")
