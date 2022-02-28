@@ -101,7 +101,7 @@ obj3.selectPerson()
 
 
 class FinalDisplay(Select):
-    def dispFinal(self):
+    def __init__(self):
         print('\n')
         print('------  MEETING INFORMATION  ------')
         print('\n')
@@ -112,6 +112,7 @@ class FinalDisplay(Select):
 
             print("meeting duration {} ".format(obj3.meetDuration[i]))
             ind = obj1.ids.index(obj3.metWith[i])
+            print("NAME: {} ".format(obj1.names[ind]))
             print("STATE: {} ".format(obj1.states[ind]))
             print("CITY: {} ".format(obj1.cities[ind]))
             print("PINCODE: {} ".format(obj1.pins[ind]))
@@ -121,4 +122,4 @@ class FinalDisplay(Select):
 
 
 obj4 = FinalDisplay()
-obj4.dispFinal()
+
