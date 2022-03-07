@@ -1,0 +1,3 @@
+# PythonPracticals_Praxware
+
+This is just a documentation of the code for problems that I have solved on various sites like Geeksforgeeks, leetcode, InterviewBit, CC, CF etc...
