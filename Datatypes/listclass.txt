@@ -1,0 +1,26 @@
+text1="Hitesh"
+
+list1=list(text1)
+print(list1)
+
+print(type(list1))
+
+string = "Praxware Technologies"
+print(list(string))
+
+#tuple to list
+tuple = ('a', 'e', 'i', 'o', 'u')
+print(list(tuple))
+
+list1 = ['a', 'e', 'i', 'o', 'u']
+print(list(list1))
+
+vowel_dictionary = {'a': 1, 'e': 2, 'i': 3, 'o':4, 'u':5}
+print(list(vowel_dictionary))
+
+
+
+
+
+
+

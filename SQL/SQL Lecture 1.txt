@@ -1,0 +1,57 @@
+create database python
+use python
+
+CREATE TABLE appone
+(
+	id int(10),
+    uname varchar(20),
+    address varchar(50),
+    mobile BigInt(10)
+);
+insert into appone value(1,"Hitesh","Ahmedabad",9016395600);
+insert into appone value(2,"Jay","Vadodara",9898098980);
+insert into appone value(3,"Vijay","Nadiad",7878078780);
+insert into appone value(4,"Ajay","Mumbai",8585685899);
+insert into appone value(5,"Pratik","Punjab",7474078780);
+insert into appone value(6,"Pooja","America",9898098980);
+
+select * from appone
+
+alter table appone
+add pincode int(6)
+
+alter table appone
+modify address varchar(100)
+
+
+UPDATE appone
+SET address = 'india'
+WHERE id = 6;
+
+SET SQL_SAFE_UPDATES = 0;
+
+update appone 
+set address="India" 
+where id = 6
+
+
+delete from appone where id = 6
+
+commit
+SET autocommit = 0
+rollback
+
+
+insert into appone value(6,"Hitesh","Ahmedabad",9016395600,382150);
+insert into appone value(7,"Jay","Vadodara",9898098980,38006);
+insert into appone value(8,"Vijay","Nadiad",7878078780,380055);
+savepoint checkdata;
+insert into appone value(9,"Ajay","Mumbai",8585685899,360055);
+insert into appone value(10,"Pratik","Punjab",7474078780,363655);
+insert into appone value(11,"Pooja","America",9898098980,898955);
+rollback to checkdata
+ 
+
+truncate table appone
+drop table appone
+

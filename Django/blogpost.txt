@@ -1,0 +1,49 @@
+Blog posting
+
+{% load static %} tells django to load a set of template tags/filters defined in the file static.py
+ (in a folder templatetags in any of the apps of your project).
+ 
+ 
+class Blog(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
+    title = models.CharField(max_length=16)
+    postDetail = models.CharField(max_length=10000)
+    postDate = models.DateField(default=date.today)
+    publisherName = models.CharField(max_length=16)
+	
+	
+views.py
+__________________
+def home(request):
+    if request.session.has_key('is_login'):
+        data = Blog.objects.all
+        return render(request, 'home.html',{'data':data})
+
+
+
+Setting.py
+________________________
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+Add in url.py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.loadsignup,name="loadsignup"),
+    path('registerUser', views.registerUser,name="registerUser"),
+    path('login', views.login,name="login"),
+    path('home', views.home,name="home"),
+    path('logout', views.logout, name="logout"),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

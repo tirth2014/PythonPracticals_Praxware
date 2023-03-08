@@ -1,0 +1,106 @@
+Get first and last record from QuerySet
+
+show data in table :
+
+1)create show.html file
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Grade</th>
+    </tr>
+      {% for i in student %}
+    <tr>
+        <th>{{ i.sId }}</th>
+        <th>{{ i.sName }}</th>
+        <th>{{ i.sEmail }}</th>
+        <th>{{ i.sGender }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+2)create View in Views.py
+
+
+def show(request):
+    student = Student.objects.all()
+    return render(request, "show.html", {'student': student})
+
+
+3)set show ("/show") in add method
+
+4)add url in urls.py file
+
+ path('show', views.show),
+
+
+
+
+
+
+***************************************************************************
+Show Record Based on Requirement :
+
+
+1)Show last Record:
+
+def show(request):
+    student = Student.objects.last()
+    return render(request, "show.html", {'student': student})
+
+Change in HTML :
+
+<table border="1">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+    </tr>
+
+     <tr>
+        <th>{{student.sId }}</th>
+        <th>{{ student.sName }}</th>
+        <th>{{ student.sEmail }}</th>
+        <th>{{ student.sGender }}</th>
+    </tr>
+
+
+
+</table>
+
+
+2)Show First Element :
+
+Change in only Views.py:
+
+def show(request):
+    student = Student.objects.first()
+    return render(request, "show.html", {'student': student})
+
+3)Show using Filter :
+
+Using Filter First object:
+
+Change in Only Views.py
+
+def show(request):
+    student = Student.objects.filter(sName='hitesh').first()
+    return render(request, "show.html", {'student': student})
+
+
+4)Show  Filter using Last Record :
+
+Change in Only Views.py
+
+
+def show(request):
+    student = Student.objects.filter(sId='11').last()
+    return render(request, "show.html", {'student': student})
+
+

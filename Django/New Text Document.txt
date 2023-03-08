@@ -1,0 +1,29 @@
+add form in the show.html
+____________________________________
+<form method="POST" action="search">
+        {% csrf_token %}
+        <td>
+        <td><input name="sName"></td>
+        <td><button type="submit">SEARCH</button></td>
+        </td>
+    </form>
+
+
+ADD function in Views
+___________________________________________
+def search(request):
+    sName = request.POST['sName']
+    # student=Student.objects.filter(sName=sName)
+    # student=Student.objects.filter(sName__iexact=sName)
+    student = Student.objects.filter(sName__icontains=sName)
+    return render(request, 'show.html', {'student': student})
+
+
+ADD URL in urls.py
+___________________________________________
+path('search', views.search),
+
+
+
+
+

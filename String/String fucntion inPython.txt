@@ -1,0 +1,145 @@
+1)String Function :
+
+capitalize() : First Letter Cpital in String
+
+2)casefold()
+
+This method is similar to the lower() method, but the casefold() method is stronger, more aggressive, meaning that it will convert more characters into lower case, and will find more matches when comparing two strings and both are converted using the casefold() method.
+
+3)count("Enter String What you find Word")
+
+Retrurn total number string occurance in String
+
+
+4)endswith(".")
+
+Find String End with . only String End nothing between character
+
+
+5)find("Enter Sting What You find want to search")
+
+Return Position match String
+
+6)isalnum()
+
+The isalnum() method returns True if all the characters are alphanumeric, meaning alphabet letter (a-z) and numbers (0-9).
+
+7)isalpha()
+
+
+The isalpha() method returns True if all the characters are alphabet letters (a-z). Example of characters that are not alphabet letters: (space)!#%&? etc.
+
+
+8)isdigit()
+
+The isdigit() method returns True if all the characters are digits, otherwise False. Exponents, like ², are also considered to be a digit.
+
+
+
+9)title()
+
+The title() function in python is the Python String Method which is used to convert the first character in each word to Uppercase and remaining characters to Lowercase in the string and returns a new string.
+
+10)Fetch Specific String From Given String
+
+substring = "code"
+string = "welcome to MycodeLibrary"
+print(substring in string)
+
+
+11)Find all numbers from string
+
+import re
+str1 = "3158 reviews"
+print (re.findall('\d+', str1 ))
+
+
+12)Python str() Function
+Python str() Function ; Parameter Values · Any object. Specifies the object to convert into a string. encoding, The encoding of the object. 
+
+The str()method takes three parameters:
+
+object - The object whose string representation is to be returned. If not provided, returns the empty string
+
+encoding - Encoding of the given object. Defaults of UTF-8 when not provided.
+
+errors - Response when decoding fails. Defaults to 'strict'.
+
+x = str(10.10)
+print(x)
+
+13)# bytes
+
+b = bytes('pythön', encoding='utf-8')
+
+print(str(b, encoding='ascii', errors='ignore'))
+
+
+14)center()
+
+The center() method returns a string which is padded with the specified character.
+
+width - length of the string with padded characters
+fillchar (optional) - padding character
+
+string = "Python is awesome"
+
+new_string = string.center(24)
+
+print("Centered String: ", new_string)
+
+OUTPUT : Centered String:     Python is awesome   
+
+
+
+Example 2)
+
+string = "Python is awesome"
+
+new_string = string.center(24, '*')
+
+print("Centered String: ", new_string)
+
+OUTPUT : Centered String:  ***Python is awesome****
+
+
+
+ 
+
+Python dict() Function
+x = dict(name = "John", age = 36, country = "Norway")
+
+Definition and Usage
+The dict() function creates a dictionary.
+
+A dictionary is a collection which is unordered, changeable and indexed.
+
+Read more about dictionaries in the chapter: Python Dictionaries.
+
+
+
+
+Template Strings
+Instead of the normal % based substitutions, templates support $ based substitutions. The rationale behind the introduction of template in Python Version 2.4 was that even though % string formatting is powerful and rich, they are error prone and also quite strict in terms of the formats that follow '%', making it complex. A common mistake with % formatting is to forget the trailing format character, for example: the e in %(variabl)e.
+
+Templates have some methods defined within: substitute() and safe_substitute(). Here is how you can use them:
+
+
+from string import Template #First you will need to import 'Tempalte' class
+
+1)money = dict(who = 'You', to_whom = 'baker')
+Template('$who owe the $to_whom a total of $$100').substitute(money)
+
+Ans : 'You owe the baker a total of $100'
+
+
+2)fact = Template('$alter_ego is weak but wait till he transforms to $superhero!')
+fact.substitute(alter_ego='Bruce Banner', superhero='Hulk')
+
+Ans :'Bruce Banner is weak but wait till he transforms to Hulk!'
+
+
+
+
+
+

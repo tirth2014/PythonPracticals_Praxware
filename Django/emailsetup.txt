@@ -1,0 +1,47 @@
+Libary put view.py
+___________________
+from django.core.mail import send_mail
+import smtplib
+from django.conf import settings
+
+
+Email Setup :setting.py
+__________________________
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'testappdjangohitesh1@gmail.com'
+EMAIL_HOST_PASSWORD = 'kachhela9016'
+
+
+Setup view.py
+_____________
+def loadhtml(request):
+    return render(request, "hello.html")
+
+
+def email1(request):
+    subject = 'Thank you for registering to our site'
+    message = ' it  means a world to us '
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['praxware@gmail.com', ]
+    send_mail(subject, message, email_from, recipient_list)
+    return redirect('/hello.html')
+
+
+
+
+Create html in templats:hello.html:
+___________________________________
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <a href="{% url 'email1' %}">hello</a>
+</body>
+</html>

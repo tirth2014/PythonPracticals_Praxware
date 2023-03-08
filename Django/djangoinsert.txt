@@ -1,0 +1,78 @@
+create database in models.py
+
+class Student(models.Model)
+	sId=models.CharField(max_length=3)
+	sName=models.CharField(max_length=12)
+	sEmail=models.EmailField()
+	sGrade=models.CharField(max_length=3)
+
+*create one forms file*
+from django import forms
+from .models import Student
+
+
+class StudentForm(forms.ModelForm):
+	class Meta:
+		model=Student
+		fields="__all__"
+	
+
+type command
+python manage.py makemigrations
+
+python manage.py  migrate
+
+
+
+**************************
+
+create templates folder
+
+create insert.html
+
+<form method="POST" action="add">
+
+    {% csrf_token %}
+    <lable>Id:</lable>
+    <div>{{ form.sId }}</div>
+
+    <lable>sName:</lable>
+    <div>{{ form.sName }}</div>
+
+    <lable>Email:</lable>
+    <div>{{ form.sEmail }}</div>
+
+    <lable>Grade:</lable>
+    <div>{{ form.sGrade }}</div>
+
+
+    <div>
+        <button type="submit">Add Data</button>
+    </div>
+
+</form>
+
+
+Now Create Views.py
+
+from django.shortcut import render,redirect
+from .forms import StudentForm
+from .models import Student
+
+def insertData(request):
+    form = StudentForm
+    return render(request, 'insert.html', {'form': form})
+
+
+def add(request):
+    form = StudentForm(request.POST)
+    form.save()
+    return redirect('/insert.html')
+
+
+
+
+URL Setting
+
+path('', views.insertData),
+    path('add',views.add),

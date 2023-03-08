@@ -1,0 +1,64 @@
+pip install razorpay
+
+Setting.py
+______________
+CSRF_TRUSTED_ORIGINS =["https://api.razorpay.com"]
+
+
+View.py
+____________________
+import razorpay
+from django.http import HttpResponse
+
+@csrf_exempt
+def coffee_payment(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        amount = int(request.POST.get('amount')) * 100
+
+        # create Razorpay client
+        client = razorpay.Client(auth=('rzp_test_JFLoglu80nG4jf', 'pNmHtMsdhgyIu8sOhyLAuWCB'))
+
+        # create order
+        response_payment = client.order.create(dict(amount=amount,
+                                                    currency='INR'))
+return render(request, 'xyz.html')
+
+
+html:
+
+<form action="{% url 'payment-status' %}" method="POST">
+                <script
+                        src="https://checkout.razorpay.com/v1/checkout.js"
+                        data-key="rzp_test_48Z9LMTDVAN5JU"
+                        data-amount="{{ payment.amount }}"
+                        data-currency="{{ payment.currency }}"
+                        data-order_id="{{ payment.id }}"
+                        data-buttontext="Pay with Razorpay"
+                        data-name="Cold Coffee Shop"
+                        data-description="Have a Cold Coffee that will make your mood fresh!"
+                        data-image="https://example.com/your_logo.jpg"
+                        data-prefill.name="{{ payment.name }}"
+                        data-prefill.email="you@example.com"
+                        data-theme.color="#F37254"
+                ></script>
+                <input type="hidden" custom="Hidden Element" name="hidden">
+            </form>
+
+
+
+@csrf_exempt
+def payment_status(request):
+    response = request.POST
+    params_dict = {
+        'razorpay_order_id': response['razorpay_order_id'],
+        'razorpay_payment_id': response['razorpay_payment_id'],
+        'razorpay_signature': response['razorpay_signature']
+    }
+
+    # client instance
+    client = razorpay.Client(auth=('rzp_test_48Z9LMTDVAN5JU', 'gMxfhwgZ73ANYJQCeblLMy7W'))
+
+return render(request, 'payment_status.html', {'status': status})
+
+

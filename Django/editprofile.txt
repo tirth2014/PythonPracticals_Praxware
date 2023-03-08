@@ -1,0 +1,65 @@
+edit profile :
+
+ADD HREF TAG TO MOVE EDIT PAGE IN SHOW.HTML ALSO PASS YOUR ID WHICH DATA YOU WANT TO EDIT
+
+<table border="1">
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+    </tr>
+        {% for i in student %}
+     <tr>
+        <th>{{i.sId }}</th>
+        <th>{{ i.sName }}</th>
+        <th>{{ i.sEmail }}</th>
+        <th>{{ i.sGender }}</th>
+         <td>
+             <a href="edit/{{ i.id }}">edit</a>
+         </td>
+    </tr>
+        {% endfor %}
+
+
+</table>
+
+
+
+*Create Views For the Edit Profile*
+
+def edit(request, id):
+    student = Student.objects.get(id=id)
+    return render(request, 'edit.html', {'student': student})
+
+*Create edit.html  For Editable where user can edit data wich have clicked*
+
+<form method="POST" action="/update/{{ student.id }}">
+    {% csrf_token %}
+
+<table>
+        <tr><td><input name="sId" required value="{{ student.sId }}"> </td></tr>
+        <tr><td><input name="sName" required value="{{ student.sName }}"> </td></tr>
+        <tr><td><input name="sEmail" required value="{{ student.sEmail }}"> </td></tr>
+        <tr><td><input name="sGender" required value="{{ student.sGender }}"> </td></tr>
+        <tr><td><button type="submit">Update</button></td></tr>
+    </table>
+</form>
+
+
+*Create Update View For Edit Profile Whatever Data changed By User*
+
+def update(request, id):
+    student = Student.objects.get(id=id)
+    form = StudentForm(request.POST, instance=student)
+    form.save()
+    return redirect('/show')
+
+
+*Create urls with id whatever which passed by url*
+
+path('edit/<int:id>', views.edit),
+path('update/<int:id>', views.update),
+
+

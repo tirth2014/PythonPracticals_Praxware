@@ -1,0 +1,38 @@
+django-admin startproject webapp .
+
+python manage.py startapp webapp
+
+python manage.py runserver
+
+webapp setting-->register app
+ installed app:
+
+	'appname.apps.appname'
+
+create folder teplates in myapp
+
+create in html file
+
+copy url from setting and past in myapp
+
+webapp url file:
+
+path('',include('myapp.urls'))
+
+
+
+*****************************Now Create Views in views.py
+
+def index(request):
+	return render(request,'show.html')
+
+
+
+add url in myapp url.py
+
+from myapp import views
+
+path('',views.index),
+
+
+then python manage.py runserver

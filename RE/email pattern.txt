@@ -1,0 +1,12 @@
+regex = "^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
+
+^	:  Match the start of a string
+[a-z0-9]+: Match a sequence of one or more letters
+[\._]?   : Match 0 or 1 repetition
+[a-z0-9]+: Match a sequence of one or more letters
+[@]      : Match a set of characters
+\w+      : Matches any alphanumeric character with one            or more letters
+[.]	 : Match a set of characters
+
+\w	 : Matches any alphanumeric character
+{2,3}$   : Match m to n repetitions with Match the end of a string
